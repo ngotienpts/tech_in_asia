@@ -1,0 +1,170 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // show search header
+  var searchHeader = document.querySelector(".primary-nav__search");
+
+  // show submenu
+  var subMenu = document.querySelector(".secondary-nav--left__list");
+
+  //
+  var primaryNav = document.querySelector(".primary-nav-wrapper");
+
+  // show menu mobile
+  var openMenuMb = document.querySelector(".bar-mb");
+  var menuMb = document.querySelector(".sub-menu-mb-wrapper");
+  var dropdownMenuMb = document.querySelector(".sub-menu-mb-content");
+  const app = {
+    // su ly cac su kien
+    handleEvent: function () {
+      const _this = this;
+      // show search header
+      if (searchHeader) {
+        searchHeader.querySelector(".primary-nav__search--icon").onclick =
+          function () {
+            searchHeader
+              .querySelector(".form-search-aside-nav")
+              .classList.toggle("open");
+          };
+      }
+      // show submenu
+      if (subMenu) {
+        var subMenuItem = subMenu.querySelectorAll(
+          ".secondary-nav--left__item"
+        );
+        subMenuItem.forEach(function (a, b) {
+          a.onclick = function (e) {
+            var subMenuDropdown = a.querySelector(
+              ".secondary-nav--left__dropdown"
+            );
+            var subMenuIcon = a.querySelector(".secondary-nav--left__icon");
+
+            var subMenuDropdownActive = document.querySelector(
+              ".secondary-nav--left__dropdown.active"
+            );
+            var subMenuIconAction = document.querySelector(
+              ".secondary-nav--left__icon.action"
+            );
+            if (subMenuDropdown && subMenuIcon) {
+              if (
+                subMenuDropdown.classList.contains("active") &&
+                subMenuIcon.classList.contains("action")
+              ) {
+                subMenuDropdown.classList.remove("active");
+                subMenuIcon.classList.remove("action");
+              } else {
+                subMenuDropdown.classList.add("active");
+                subMenuIcon.classList.add("action");
+
+                if (
+                  subMenuDropdownActive != null &&
+                  subMenuIconAction != null
+                ) {
+                  subMenuDropdownActive.classList.remove("active");
+                  subMenuIconAction.classList.remove("action");
+                }
+              }
+            }
+          };
+        });
+      }
+
+      // show menu mobile
+      if (openMenuMb && menuMb) {
+        openMenuMb.onclick = function () {
+          menuMb.classList.add("active");
+        };
+        var closeMenuMb = menuMb.querySelector(".sub-menu-mb-close");
+        closeMenuMb.onclick = function () {
+          menuMb.classList.remove("active");
+        };
+      }
+      if (dropdownMenuMb) {
+        var dropdownMenuMbItem =
+          dropdownMenuMb.querySelectorAll(".sub-menu-mb-item");
+
+        dropdownMenuMbItem.forEach(function (a) {
+          a.querySelector(".sub-menu-mb-item-text").lastElementChild.onclick =
+            function () {
+              a.querySelector(".sub-menu-mb-dropdown").classList.toggle("open");
+              this.classList.toggle("active");
+            };
+        });
+      }
+      // hide cac element khi click ra ngoai
+      document.addEventListener("click", function (e) {
+        if (searchHeader) {
+          if (
+            !searchHeader.contains(e.target) &&
+            !e.target.matches(".primary-nav__search--icon")
+          ) {
+            searchHeader
+              .querySelector(".form-search-aside-nav")
+              .classList.remove("open");
+          }
+        }
+      });
+    },
+    // sticky sidebar main
+    stickySlidebar: function () {
+      $(".leftSidebar, .rightSidebar").theiaStickySidebar({
+        containerSelector: "#main",
+        additionalMarginTop: 60,
+        additionalMarginBottom: 20,
+      });
+    },
+    // slide premium content
+    slidePremiumContent: function () {
+      if (primaryNav.offsetWidth < 576) {
+        $(".premium-content__list").slick({
+          dots: false,
+          infinite: false,
+          arrows: false,
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+        });
+      }
+    },
+    // slide latest jobs
+    slideLatestJobs: function () {
+      if (primaryNav.offsetWidth < 576) {
+        $(".latest-jobs-list").slick({
+          dots: false,
+          infinite: false,
+          arrows: false,
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+        });
+      }
+    },
+    // window scroll
+    windowScroll: function () {
+      var _this = this;
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("header").style.top = "0";
+        } else {
+          document.getElementById("header").style.top =
+            "-" + primaryNav.offsetHeight + "px";
+        }
+        prevScrollpos = currentScrollPos;
+      };
+    },
+    // khoi tao function start
+    start: function () {
+      // su ly cac su kien
+      this.handleEvent();
+      // sticky sidebar main
+      this.stickySlidebar();
+      // slide premium content
+      this.slidePremiumContent();
+      // slide latest jobs
+      this.slideLatestJobs();
+      // window scroll
+      this.windowScroll();
+    },
+  };
+
+  app.start();
+});
