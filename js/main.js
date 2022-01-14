@@ -8,10 +8,29 @@ document.addEventListener("DOMContentLoaded", function () {
   //
   var primaryNav = document.querySelector(".primary-nav-wrapper");
 
+  // show pass word
+  var passwordInput = document.querySelectorAll(".form-group-pass");
+
   // show menu mobile
   var openMenuMb = document.querySelector(".bar-mb");
   var menuMb = document.querySelector(".sub-menu-mb-wrapper");
   var dropdownMenuMb = document.querySelector(".sub-menu-mb-content");
+
+  // show form sign up
+  var signupBody = document.querySelector(".sign-up-content");
+  // show popup sign up
+  var openPopupSignup = document.querySelector(".primary-nav__signup");
+  var changeSignup = document.querySelectorAll(".sign-up-header--item");
+
+  //close popup sign up
+  var signupWrapper = document.querySelector(".sign-up-wrapper");
+
+  // show popup login
+  var openPopupLogin = document.querySelector(".primary-nav__login");
+  var changeLogin = document.querySelectorAll(".login-header--item");
+  //close popup login
+  var loginWrapper = document.querySelector(".login-wrapper");
+
   const app = {
     // su ly cac su kien
     handleEvent: function () {
@@ -87,6 +106,74 @@ document.addEventListener("DOMContentLoaded", function () {
               a.querySelector(".sub-menu-mb-dropdown").classList.toggle("open");
               this.classList.toggle("active");
             };
+        });
+      }
+
+      // show password
+      if (passwordInput) {
+        passwordInput.forEach(function (el) {
+          var inputPass = el.querySelector(".form-control-pass");
+          var inputIconPass = el.querySelector(".password-icon");
+          inputIconPass.onclick = function () {
+            if (inputPass.getAttribute("type") == "password") {
+              inputPass.setAttribute("type", "text");
+              inputIconPass.setAttribute("name", "eye-off-outline");
+            } else {
+              inputPass.setAttribute("type", "password");
+              inputIconPass.setAttribute("name", "eye-outline");
+            }
+          };
+        });
+      }
+
+      // show form sign up
+      if (signupBody) {
+        signupBody.querySelector(".login-btn-email").onclick = function () {
+          signupBody.querySelector(".sign-up-form").classList.toggle("open");
+          signupBody
+            .querySelector(".fa-arrow-right")
+            .classList.toggle("active");
+        };
+      }
+      // close popup sign up
+      if (signupWrapper) {
+        signupWrapper.querySelector(".close-sign-up").onclick = function () {
+          signupWrapper.style.display = "none";
+        };
+        //open popup sign up
+        if (openPopupSignup) {
+          openPopupSignup.onclick = function () {
+            signupWrapper.style.display = "block";
+          };
+        }
+      }
+      // close popup login
+      if (loginWrapper) {
+        loginWrapper.querySelector(".close-login").onclick = function () {
+          loginWrapper.style.display = "none";
+        };
+        //open popup sign up
+        if (openPopupLogin) {
+          openPopupLogin.onclick = function () {
+            loginWrapper.style.display = "block";
+          };
+        }
+      }
+      // change sign & login
+      if (changeLogin) {
+        changeLogin.forEach(function (a) {
+          a.onclick = function () {
+            signupWrapper.style.display = "none";
+            loginWrapper.style.display = "block";
+          };
+        });
+      }
+      if (changeSignup) {
+        changeSignup.forEach(function (b) {
+          b.onclick = function () {
+            loginWrapper.style.display = "none";
+            signupWrapper.style.display = "block";
+          };
         });
       }
       // hide cac element khi click ra ngoai

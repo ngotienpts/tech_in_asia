@@ -177,21 +177,28 @@
   margin-left: 0.75rem;
   padding: 0.75rem 0.75rem 0.75rem 0;
 }
-.form-search-aside-nav::-webkit-input-placeholder {
+.form-search-aside-nav::-webkit-input-placeholder,
+.form-control-sign-up::-webkit-input-placeholder {
   /* Edge */
   color: #171717;
   font-size: 0.75rem;
   font-style: italic;
 }
-
-.form-search-aside-nav:-ms-input-placeholder {
+.form-control-sign-up::-webkit-input-placeholder {
+  font-size: 0.875rem;
+}
+.form-search-aside-nav:-ms-input-placeholder,
+.form-control-sign-up::-webkit-input-placeholder {
   /* Internet Explorer 10-11 */
   color: #171717;
   font-size: 0.75rem;
   font-style: italic;
 }
-
-.form-search-aside-nav::placeholder {
+.form-control-sign-up::-webkit-input-placeholder {
+  font-size: 0.875rem;
+}
+.form-search-aside-nav::placeholder,
+.form-control-sign-up::-webkit-input-placeholder {
   color: #171717;
   font-size: 0.75rem;
   font-style: italic;
