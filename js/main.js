@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //close popup login
   var loginWrapper = document.querySelector(".login-wrapper");
 
+  // premium container
+  var premiumContainer = document.querySelector(".premium-cate-container");
+
   const app = {
     // su ly cac su kien
     handleEvent: function () {
@@ -95,6 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
         closeMenuMb.onclick = function () {
           menuMb.classList.remove("active");
         };
+        var showSignupMb = menuMb.querySelector(
+          ".sub-menu-mb-aside-nav--signup"
+        );
+        var showLoginMb = menuMb.querySelector(".sub-menu-mb-aside-nav--login");
+        showSignupMb.onclick = function () {
+          signupWrapper.style.display = "block";
+          loginWrapper.style.display = "none";
+        };
+        showLoginMb.onclick = function () {
+          loginWrapper.style.display = "block";
+          signupWrapper.style.display = "none";
+        };
       }
       if (dropdownMenuMb) {
         var dropdownMenuMbItem =
@@ -135,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .classList.toggle("active");
         };
       }
+
       // close popup sign up
       if (signupWrapper) {
         signupWrapper.querySelector(".close-sign-up").onclick = function () {
@@ -147,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
           };
         }
       }
+
       // close popup login
       if (loginWrapper) {
         loginWrapper.querySelector(".close-login").onclick = function () {
@@ -159,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
           };
         }
       }
+
       // change sign & login
       if (changeLogin) {
         changeLogin.forEach(function (a) {
@@ -176,6 +194,29 @@ document.addEventListener("DOMContentLoaded", function () {
           };
         });
       }
+
+      // premium container
+      if (premiumContainer) {
+        var items = premiumContainer.querySelectorAll(".premium-cate-tab-item");
+        var tabs = premiumContainer.querySelectorAll(".premium-cate-pane");
+        var input = premiumContainer.querySelector(".toggle__input");
+        input.onchange = function () {
+          items.forEach(function (value, index) {
+            var pane = tabs[index];
+            if (
+              pane.classList.contains("active") &&
+              value.classList.contains("active")
+            ) {
+              pane.classList.remove("active");
+              value.classList.remove("active");
+            } else {
+              pane.classList.add("active");
+              value.classList.add("active");
+            }
+          });
+        };
+      }
+
       // hide cac element khi click ra ngoai
       document.addEventListener("click", function (e) {
         if (searchHeader) {

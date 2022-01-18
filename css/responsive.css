@@ -153,6 +153,10 @@
   .receive-email {
     padding: 1.125rem;
   }
+
+  .premium-cate-pane-block {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media (max-width: 46.1875em) {
   .article--content {
@@ -184,6 +188,30 @@
 
   .page-title {
     font-size: 1.75rem;
+  }
+
+  .sign-up__title {
+    font-size: 21px;
+  }
+
+  .sign-up-content,
+.login-content {
+    padding: 2rem;
+  }
+
+  .btn-sign-up,
+.btn-login {
+    margin: 1rem 0 0.75rem;
+  }
+
+  .close-sign-up,
+.close-login {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .premium-cate-pane-block {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-height: 41.75em) {
