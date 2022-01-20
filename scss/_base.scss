@@ -1,3 +1,5 @@
+@import url("../font/HelveticaNeue.otf");
+@import url("../font/GeorgiaPro-Reg.ttf");
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -82,6 +84,12 @@ img {
 }
 .font-third {
   font-family: "Playfair Display", serif;
+}
+.font-helve {
+  font-family: "Helvetical Neue", sans-serif;
+}
+.font-georgia {
+  font-family: "Georgia", sans-serif;
 }
 /*===========================================================================*/
 .w-620 {
@@ -267,6 +275,9 @@ img {
 .text-00 {
   color: #000;
 }
+.text-yellow-ff {
+  color: #ffcd00;
+}
 /*=================================================================*/
 .bg-red-e100 {
   background-color: #e10000;
@@ -285,6 +296,9 @@ img {
 }
 .bg-white {
   background-color: #fff;
+}
+.bg-black-21 {
+  background-color: #211e1d;
 }
 /*=================================================================*/
 .fw-300 {
@@ -576,4 +590,8 @@ img {
 /*=================================================================*/
 .f-italic {
   font-style: italic;
+}
+/*=================================================================*/
+.vertical-middle {
+  vertical-align: middle;
 }
