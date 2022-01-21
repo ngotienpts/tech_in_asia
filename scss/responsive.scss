@@ -27,7 +27,8 @@
   .primary-nav__sub,
   .primary-nav__search-mb,
   .secondary-nav--right__link-mb,
-  .premium-content-mb {
+  .premium-content-mb,
+  .latest-jobs-mb {
     display: block;
   }
   .primary-nav {
@@ -184,7 +185,8 @@
     right: 1rem;
   }
   .premium-cate-pane-block,
-  .latest-video-container {
+  .latest-video-container,
+  .detail-video-container {
     grid-template-columns: 1fr;
   }
   .hero-image {
@@ -227,6 +229,29 @@
   }
   .video-form__form {
     padding: 0 1.125rem;
+  }
+  .detail-video__title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .detail-video-content {
+    font-size: 1rem;
+  }
+  .detail-video-content p {
+    margin: 1rem 0;
+    line-height: 1.8;
+  }
+  .detail-video-up-next__img {
+    width: 40%;
+    flex-shrink: 0;
+  }
+  .detail-video-up-next__content {
+    width: 60%;
+    flex: 1;
+  }
+  .detail-video-up-next__content-title {
+    font-size: 13px;
+    margin-bottom: 0;
   }
 }
 

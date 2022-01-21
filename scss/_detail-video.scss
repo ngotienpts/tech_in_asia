@@ -44,3 +44,26 @@
 .detail-video-up-next__img {
   position: relative;
 }
+.detail-video-up-next-item + .detail-video-up-next-item {
+  margin-top: 2rem;
+}
+.social-detail-link-fb,
+.social-detail-link-linked,
+.social-detail-link-twitter,
+.social-detail-link-email {
+  width: 2rem !important;
+  height: 2rem !important;
+  border: none !important;
+}
+.social-detail-link-fb {
+  background: #3b5998;
+}
+.social-detail-link-twitter {
+  background: #1da1f2;
+}
+.social-detail-link-linked {
+  background: #0077b5;
+}
+.social-detail-link-email {
+  background: #ff6600;
+}

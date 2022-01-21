@@ -239,6 +239,14 @@ document.addEventListener("DOMContentLoaded", function () {
         additionalMarginBottom: 20,
       });
     },
+    // sticky sidebar detail
+    stickySlidebarDetail: function () {
+      $(".leftSidebarDetail, .rightSidebarDetail").theiaStickySidebar({
+        containerSelector: "#detail",
+        additionalMarginTop: 60,
+        additionalMarginBottom: 20,
+      });
+    },
     // slide premium content
     slidePremiumContent: function () {
       if (primaryNav.offsetWidth < 576) {
@@ -263,6 +271,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     },
+    // slide recomend read
+    slideRecomendRead: function () {
+      $(".recommend-read__container").slick({
+        dots: false,
+        infinite: false,
+        arrows: true,
+        slidesToShow: 3.5,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 739,
+            settings: {
+              slidesToShow: 2.5,
+            },
+          },
+        ],
+      });
+    },
     // window scroll
     windowScroll: function () {
       var _this = this;
@@ -285,10 +311,14 @@ document.addEventListener("DOMContentLoaded", function () {
       this.handleEvent();
       // sticky sidebar main
       this.stickySlidebar();
+      // sticky sidebar detail
+      this.stickySlidebarDetail();
       // slide premium content
       this.slidePremiumContent();
       // slide latest jobs
       this.slideLatestJobs();
+      // slide recomend read
+      this.slideRecomendRead();
       // window scroll
       this.windowScroll();
     },
