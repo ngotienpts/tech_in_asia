@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function () {
     stickySlidebarDetail: function () {
       $(".leftSidebarDetail, .rightSidebarDetail").theiaStickySidebar({
         containerSelector: "#detail",
-        additionalMarginTop: 60,
+        additionalMarginTop: 90,
         additionalMarginBottom: 20,
       });
     },
@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
     // slide latest jobs
-    slideLatestJobs: function () {
+    slideLatestJobDetail: function () {
       if (primaryNav.offsetWidth < 576) {
         $(".latest-jobs-list").slick({
           dots: false,
@@ -289,21 +289,49 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
       });
     },
+    // slide latest jobs
+    slideLatestJobs: function () {
+      $(".detail-latest-job-container").slick({
+        dots: false,
+        infinite: false,
+        arrows: true,
+        slidesToShow: 3.5,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 739,
+            settings: {
+              slidesToShow: 2.5,
+            },
+          },
+        ],
+      });
+    },
     // window scroll
     windowScroll: function () {
       var _this = this;
+      //
       var prevScrollpos = window.pageYOffset;
+      var secondaryNav = document.querySelector("#secondary-nav");
       window.onscroll = function () {
         var currentScrollPos = window.pageYOffset;
-
         if (prevScrollpos > currentScrollPos) {
           document.getElementById("header").style.top = "0";
+          if (secondaryNav) {
+            if (secondaryNav.querySelector(".third-nav")) {
+              secondaryNav.classList.remove("active");
+            }
+          }
         } else {
           document.getElementById("header").style.top =
             "-" + primaryNav.offsetHeight + "px";
+          if (secondaryNav.querySelector(".third-nav")) {
+            secondaryNav.classList.add("active");
+          }
         }
         prevScrollpos = currentScrollPos;
       };
+      //
     },
     // khoi tao function start
     start: function () {
@@ -319,6 +347,8 @@ document.addEventListener("DOMContentLoaded", function () {
       this.slideLatestJobs();
       // slide recomend read
       this.slideRecomendRead();
+      // slide latest jobs
+      this.slideLatestJobDetail();
       // window scroll
       this.windowScroll();
     },
