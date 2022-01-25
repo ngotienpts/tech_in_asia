@@ -1776,6 +1776,10 @@ img {
   content: none;
 }
 
+.detail-category__item a {
+  text-decoration: underline;
+}
+
 .detail-title {
   margin-bottom: 1.25rem;
 }
@@ -2044,6 +2048,7 @@ img {
 
 .detail-latest-job {
   padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
   margin: 1.5rem 0;
   border-top: 1px solid #ededed;
 }
@@ -2634,6 +2639,96 @@ img {
 
 .social-detail-link-email {
   background: #ff6600;
+}
+
+.comment-wrapper {
+  position: fixed;
+  right: -100%;
+  left: auto;
+  border: 0;
+  height: 100%;
+  border-left: 1px solid #f5f5f5;
+  max-width: 420px;
+  width: 100%;
+  z-index: 100;
+  transition: all 0.4s ease-out;
+  background: #fff;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.02);
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -ms-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-wrapper.open {
+  right: 0;
+}
+
+.comment-heading {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-content {
+  padding: 1.125rem;
+  -webkit-overflow-scrolling: touch;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: auto;
+  overflow-x: hidden;
+  -ms-overscroll-behavior: contain;
+  overscroll-behavior: contain;
+  max-height: calc(100% - 250px);
+}
+
+.comment-content__input {
+  border-radius: 4px;
+  border: 1px solid #dbdbdb;
+  line-height: 24px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+
+.btn.secondary.outline {
+  color: #707070;
+  background-color: transparent;
+  border-color: #dbdbdb;
+}
+
+.btn.primary {
+  background-color: #e10000;
+}
+
+.comment-content__login,
+.comment-content__signup,
+.close-comment-wrapper,
+.comment-content__input {
+  cursor: pointer;
+}
+
+.comment-content__btn {
+  text-align: end;
+}
+
+.comment-content__text {
+  text-align: center;
+  padding: 1.125rem 0;
+}
+
+.comment-content__text3 {
+  margin: 13px 0;
+}
+
+.cmt-mb {
+  display: none;
 }
 
 .footer-top-wrapper {

@@ -19,20 +19,25 @@ document.addEventListener("DOMContentLoaded", function () {
   // show form sign up
   var signupBody = document.querySelector(".sign-up-content");
   // show popup sign up
-  var openPopupSignup = document.querySelector(".primary-nav__signup");
+  var openPopupSignup = document.querySelectorAll(".signup-show");
   var changeSignup = document.querySelectorAll(".sign-up-header--item");
 
   //close popup sign up
   var signupWrapper = document.querySelector(".sign-up-wrapper");
 
   // show popup login
-  var openPopupLogin = document.querySelector(".primary-nav__login");
+  var openPopupLogin = document.querySelectorAll(".login-show");
   var changeLogin = document.querySelectorAll(".login-header--item");
   //close popup login
   var loginWrapper = document.querySelector(".login-wrapper");
 
   // premium container
   var premiumContainer = document.querySelector(".premium-cate-container");
+
+  // show cmt
+  var showCmt = document.querySelectorAll(".show-cmt");
+  var cmtWrapper = document.querySelector(".comment-wrapper");
+  var closeCmt = document.querySelector(".close-comment-wrapper");
 
   const app = {
     // su ly cac su kien
@@ -158,9 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         //open popup sign up
         if (openPopupSignup) {
-          openPopupSignup.onclick = function () {
-            signupWrapper.style.display = "block";
-          };
+          openPopupSignup.forEach(function (a) {
+            a.onclick = function () {
+              signupWrapper.style.display = "block";
+            };
+          });
         }
       }
 
@@ -171,9 +178,11 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         //open popup sign up
         if (openPopupLogin) {
-          openPopupLogin.onclick = function () {
-            loginWrapper.style.display = "block";
-          };
+          openPopupLogin.forEach(function (a) {
+            a.onclick = function () {
+              loginWrapper.style.display = "block";
+            };
+          });
         }
       }
 
@@ -217,6 +226,29 @@ document.addEventListener("DOMContentLoaded", function () {
         };
       }
 
+      // show cmt
+      if (showCmt) {
+        showCmt.forEach(function (a) {
+          a.onclick = function () {
+            if (cmtWrapper) {
+              if (cmtWrapper.classList.contains("open")) {
+                cmtWrapper.classList.remove("open");
+              } else {
+                cmtWrapper.classList.add("open");
+              }
+            }
+            document.querySelector(".comments-bubble").style.display = "none";
+          };
+        });
+        if (closeCmt) {
+          closeCmt.onclick = function () {
+            if (cmtWrapper) {
+              cmtWrapper.classList.remove("open");
+            }
+            document.querySelector(".comments-bubble").style.display = "block";
+          };
+        }
+      }
       // hide cac element khi click ra ngoai
       document.addEventListener("click", function (e) {
         if (searchHeader) {
@@ -301,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             breakpoint: 739,
             settings: {
-              slidesToShow: 2.5,
+              slidesToShow: 1.5,
             },
           },
         ],
@@ -322,11 +354,18 @@ document.addEventListener("DOMContentLoaded", function () {
               secondaryNav.classList.remove("active");
             }
           }
+          if (cmtWrapper) {
+            cmtWrapper.style.top =
+              document.getElementById("header").offsetHeight + "px";
+          }
         } else {
           document.getElementById("header").style.top =
             "-" + primaryNav.offsetHeight + "px";
           if (secondaryNav.querySelector(".third-nav")) {
             secondaryNav.classList.add("active");
+          }
+          if (cmtWrapper) {
+            cmtWrapper.style.top = primaryNav.offsetHeight + "px";
           }
         }
         prevScrollpos = currentScrollPos;

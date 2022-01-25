@@ -31,6 +31,9 @@
 .detail-category__item:last-child::after {
   content: none;
 }
+.detail-category__item a {
+  text-decoration: underline;
+}
 .detail-title {
   margin-bottom: 1.25rem;
 }
@@ -255,6 +258,7 @@
 }
 .detail-latest-job {
   padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
   margin: 1.5rem 0;
   border-top: 1px solid #ededed;
 }

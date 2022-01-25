@@ -5,7 +5,8 @@
     overflow: auto;
   }
 
-  .main {
+  .main,
+.detail-wrapper {
     display: block;
     padding-bottom: 0;
   }
@@ -20,7 +21,8 @@
 .premium-content,
 .article--content__des,
 .main-right-wrapper,
-#footer {
+#footer,
+.detail-right {
     display: none;
   }
 
@@ -30,7 +32,8 @@
 .primary-nav__search-mb,
 .secondary-nav--right__link-mb,
 .premium-content-mb,
-.latest-jobs-mb {
+.latest-jobs-mb,
+.cmt-mb {
     display: block;
   }
 
@@ -158,6 +161,29 @@
 
   .premium-cate-pane-block {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .detail-left {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .detail-category {
+    flex-wrap: wrap;
+  }
+
+  .detail-title {
+    font-size: 21px;
+  }
+
+  .detail-content p,
+.detail-content strong {
+    font-size: 1rem;
+  }
+
+  .paywall-reminder {
+    font-size: 13px;
+    padding: 1.125rem;
   }
 }
 @media (min-width: 46.25em) and (max-width: 64em) {
@@ -301,6 +327,19 @@
   .detail-video-up-next__content-title {
     font-size: 13px;
     margin-bottom: 0;
+  }
+
+  .third-nav-title {
+    display: none;
+  }
+
+  .detail-wrapper .premium-content-mb {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .detail-category__item {
+    margin-bottom: 0.5rem;
   }
 }
 @media (max-height: 41.75em) {
