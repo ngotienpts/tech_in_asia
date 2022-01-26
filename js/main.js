@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var cmtWrapper = document.querySelector(".comment-wrapper");
   var closeCmt = document.querySelector(".close-comment-wrapper");
 
+  // show notification
+  var showNoti = document.querySelector(".primary-nav__notifi");
+  // show user settings
+  var showUser = document.querySelector(".primary-nav__user");
+
   const app = {
     // su ly cac su kien
     handleEvent: function () {
@@ -249,6 +254,46 @@ document.addEventListener("DOMContentLoaded", function () {
           };
         }
       }
+
+      // show notification
+      if (showNoti) {
+        showNoti.querySelector(".primary-nav__notifi-icon").onclick =
+          function () {
+            showNoti
+              .querySelector(".primary-nav__notifi-dropdown")
+              .classList.toggle("active");
+            if (
+              showUser &&
+              showUser
+                .querySelector(".primary-nav__user-dropdown")
+                .classList.contains("active")
+            ) {
+              showUser
+                .querySelector(".primary-nav__user-dropdown")
+                .classList.remove("active");
+            }
+          };
+      }
+
+      // show user settings
+      if (showUser) {
+        showUser.querySelector(".primary-nav__user-img").onclick = function () {
+          showUser
+            .querySelector(".primary-nav__user-dropdown")
+            .classList.toggle("active");
+          if (
+            showNoti &&
+            showNoti
+              .querySelector(".primary-nav__notifi-dropdown")
+              .classList.contains("active")
+          ) {
+            showNoti
+              .querySelector(".primary-nav__notifi-dropdown")
+              .classList.remove("active");
+          }
+        };
+      }
+
       // hide cac element khi click ra ngoai
       document.addEventListener("click", function (e) {
         if (searchHeader) {
